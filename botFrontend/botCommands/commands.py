@@ -1,7 +1,7 @@
-from . import dp, API_TOKEN, bot
-from aiogram import types
 import aiohttp
+from aiogram import types
 
+from . import API_TOKEN, bot, dp
 
 API_LINK = 'http://django:8000/bot'
 IMAGE_API_LINK = 'http://django:8000/bot/image'

@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Profile, Message, Image
+
+from .models import Image, Message, Profile
 
 # Register your models here.
 
@@ -17,10 +18,9 @@ class ImageAdmin(admin.ModelAdmin):
 
 @admin.register(Message)
 class MessageAdmin(admin.ModelAdmin):
-    list_display = ['user', 'user_message', 'user_response', 'bot_answer', 'image', 'datetime']
+    list_display = ['user',
+                    'user_message',
+                    'user_response',
+                    'bot_answer', 'image',
+                    'datetime']
     filter = ['datetime']
-
-
-
-
-

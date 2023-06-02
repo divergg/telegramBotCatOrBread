@@ -1,11 +1,13 @@
+import os
+import tempfile
+
+import PIL
 from django.test import TestCase
 from rest_framework.test import APIRequestFactory, force_authenticate
-from ..models import Profile, Message, Image
-from ..views import OperateBotCommandsView, ImageUploadView
+
 from ..const import ANSWER_0, ANSWER_1_YES, ANSWER_UNKNOWN
-import tempfile
-import PIL
-import os
+from ..models import Image, Message, Profile
+from ..views import ImageUploadView, OperateBotCommandsView
 
 
 class OperateBotCommandsViewTests(TestCase):

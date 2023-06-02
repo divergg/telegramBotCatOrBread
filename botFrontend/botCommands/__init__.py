@@ -1,9 +1,8 @@
-from aiogram import Bot, Dispatcher
 import logging
-from dotenv import load_dotenv
 import os
 
-
+from aiogram import Bot, Dispatcher
+from dotenv import load_dotenv
 
 load_dotenv()
 

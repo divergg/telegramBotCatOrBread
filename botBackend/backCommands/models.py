@@ -1,16 +1,22 @@
 from django.db import models
 from django.utils import timezone
-from .const import ANSWER_0, ANSWER_1_YES, ANSWER_2_YES, ANSWER_1_NO, ANSWER_2_NO, ANSWER_UNKNOWN
 
+from .const import (ANSWER_0, ANSWER_1_NO, ANSWER_1_YES, ANSWER_2_NO,
+                    ANSWER_2_YES, ANSWER_UNKNOWN)
 
 # Create your models here.
 
 class Profile(models.Model):
 
-    username = models.CharField(max_length=50, verbose_name="username", blank=True, default='')
+    username = models.CharField(max_length=50,
+                                verbose_name="username",
+                                blank=True,
+                                default='')
 
     # Identify user's position in a dialog
-    step_in_dialog = models.IntegerField(default=0, verbose_name='current step', null=False)
+    step_in_dialog = models.IntegerField(default=0,
+                                         verbose_name='current step',
+                                         null=False)
 
     date_of_creation = models.DateTimeField(null=False,
                                             default=timezone.now,
@@ -22,7 +28,6 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'{self.username}'
-
 
     def save(self, *args, **kwargs):
         last_message = Message.objects.filter(user=self).last()
@@ -50,10 +55,9 @@ class Profile(models.Model):
 class Image(models.Model):
 
     related_image = models.ImageField(upload_to='images/',
-                              default=None,
-                              null=True,
-                              verbose_name='image')
-
+                                      default=None,
+                                      null=True,
+                                      verbose_name='image')
 
 
 class Message(models.Model):
@@ -89,7 +93,11 @@ class Message(models.Model):
     user_response = models.CharField(
         verbose_name="response", max_length=15, choices=RESPONSE_CHOICES, default='UNKNOWN'
     )
-    image = models.ForeignKey(Image, on_delete=models.CASCADE, related_name="image", default=None, null=True)
+    image = models.ForeignKey(Image,
+                              on_delete=models.CASCADE,
+                              related_name="image",
+                              default=None, null=True)
+
     bot_answer = models.TextField(verbose_name="bot answer", default=None)
     datetime = models.DateTimeField(null=False,
                                     default=timezone.now,
@@ -120,11 +128,7 @@ class Message(models.Model):
         else:
             self.bot_answer = self.BOT_ANSWERS_CHOICES[3][0]
 
-
     def save(self, *args, **kwargs):
         self.__overwrite_bot_answer()
         super().save(*args, **kwargs)
         self.user.save()
-
-
-
