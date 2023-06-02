@@ -17,7 +17,11 @@
 
 # Скриншоты работы бота
 
-![pic1](https://github.com/divergg/shift_visual/blob/master/screen1.PNG)
+![pic1](https://github.com/divergg/telegramBotCatOrBread/blob/master/pic1.PNG)
 
-![pic2](https://github.com/divergg/shift_visual/blob/master/screen2.PNG)
+![pic2](https://github.com/divergg/telegramBotCatOrBread/blob/master/pic2.PNG)
+
+![pic3](https://github.com/divergg/telegramBotCatOrBread/blob/master/pic3.PNG)
+
+![pic4](https://github.com/divergg/telegramBotCatOrBread/blob/master/pic4.PNG)
  
