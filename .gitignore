@@ -1,0 +1,9 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+/.idea/
+.env
+/venv/
+/__pycache__/
+
+

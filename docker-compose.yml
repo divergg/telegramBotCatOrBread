@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  bot:
+    container_name: hleb_kit_bot
+    build:
+      context: .
+      dockerfile: bot.Dockerfile
+    restart: always
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./.env
+    volumes:
+      - ./botFrontend:/bot
+
+  django:
+    build: .
+    container_name: backend
+    command: bash -c "python manage.py migrate --noinput && python manage.py runserver 0.0.0.0:8000"
+    env_file:
+      - ./.env
+    volumes:
+      - ./botBackend:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - hleb_kit
+
+  hleb_kit:
+    image: postgres:latest
+    container_name: hleb_kit
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:
