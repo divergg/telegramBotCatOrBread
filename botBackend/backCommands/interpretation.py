@@ -1,8 +1,9 @@
-import spacy
 import os
 import string
+
 import cv2
 import numpy as np
+import spacy
 
 """
 Here the interpretation of user answers is happening (yes or no) 
@@ -11,9 +12,6 @@ Special  case for 'START' is used
 """
 
 current_dir = os.getcwd()
-
-
-
 
 
 def interpret_text_answer(message: str):
@@ -49,11 +47,17 @@ def interpret_image_answer(img):
 
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-    path_to_classifier = os.path.join(current_dir, 'backCommands', 'interpretation_model', 'imagemodel', 'classifier.xml')
+    path_to_classifier = os.path.join(current_dir,
+                                      'backCommands',
+                                      'interpretation_model',
+                                      'imagemodel', 'classifier.xml')
 
     cat_cascade = cv2.CascadeClassifier(path_to_classifier)
 
-    cats = cat_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
+    cats = cat_cascade.detectMultiScale(gray,
+                                        scaleFactor=1.1,
+                                        minNeighbors=5,
+                                        minSize=(30, 30))
 
     if len(cats) > 0:
         return 'YES'

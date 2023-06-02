@@ -1,11 +1,11 @@
+from rest_framework import parsers, views
 from rest_framework.response import Response
-from rest_framework import views, parsers
-from .utils import handle_errors
-from .interpretation import interpret_text_answer, interpret_image_answer
-from .models import Profile, Message, Image
-import os
-# Create your views here.
 
+from .interpretation import interpret_image_answer, interpret_text_answer
+from .models import Image, Message, Profile
+from .utils import handle_errors
+
+# Create your views here.
 
 
 class OperateBotCommandsView(views.APIView):
@@ -75,14 +75,3 @@ class ImageUploadView(views.APIView):
         bot_answer = message.bot_answer
 
         return Response({'response': bot_answer})
-
-
-
-
-
-
-
-
-
-
-

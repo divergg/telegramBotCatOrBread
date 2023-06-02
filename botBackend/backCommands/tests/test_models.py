@@ -1,7 +1,8 @@
 from django.test import TestCase
 from django.utils import timezone
-from ..models import Profile, Message
+
 from ..const import ANSWER_0
+from ..models import Message, Profile
 
 
 class ProfileModelTests(TestCase):
