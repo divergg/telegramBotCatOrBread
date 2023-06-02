@@ -22,5 +22,5 @@ jobs:
       - name: Run Tests
         run: |
           cd ./botBackend
-          echo "SECRET_KEY = 'django-insecure-dummy-secret'" > ./proj/secrets.py
+          echo "SECRET_KEY = 'django-insecure-dummy-secret'" > .env
           python3 manage.py test
